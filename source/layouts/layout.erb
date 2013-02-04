@@ -7,18 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title><%= data.page.title || "Middleman Boilerplate" %></title>
+    <title><%= data.page.title || "Benjamin Charity" %></title>
 
     <%= stylesheet_link_tag "site" %>
   </head>
 
   <body class="<%= page_classes %>">
+    <div class="cover"></div>
+
     <div class="window">
       <%= partial "shared/header" %>
 
-      <%= yield %>
+      <%#= yield %>
 
-      <%= partial "shared/footer" %>
+      <%#= partial "shared/footer" %>
     </div>
   </body>
 

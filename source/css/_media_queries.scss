@@ -35,7 +35,21 @@
 // up to iphone landscape
 //
 @media all and (max-width: 30em) {
+  .main-header {
+    .logo {
+      height: 140px;
+      width: 200px;
+    }
 
+    .main-nav {
+      font-size: 12px;
+
+      li {
+        width: 75px;
+        padding: 0;
+      }
+    }
+  }
 }
 
 

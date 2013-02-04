@@ -1,11 +1,80 @@
-html {
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 
+html {
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {
-
+  position: relative;
+  z-index: 1;
 }
 
-.symbol {
-  font-family: $web-symbols;
+.cover {
+  background-image: url("../i/texture-dark.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: -1;
 }
+
+
+.main-header {
+  padding-top: 100px;
+
+  .logo {
+    background: url("../i/logo.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 213px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-indent: 100%;
+    @include single-transition;
+    white-space: nowrap;
+    width: 300px;
+  }
+}
+
+.main-nav {
+  font-family: Georgia, Times New Roman, Times, serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 3px;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    padding: 0 6px;
+    @include transition-property(padding);
+    width: 100px;
+
+    a {
+      color: $white;
+      padding: 6px;
+      position: relative;
+      @include single-transition;
+
+      &:focus,
+      &:hover {
+        top: 10px;
+        padding-top: 20px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
