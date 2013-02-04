@@ -102,6 +102,10 @@ body, select, input, textarea {
   color: #444;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -200,5 +204,7 @@ a:link {
   // apply a natural box layout model to all elements
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
   box-sizing: border-box;
 }
