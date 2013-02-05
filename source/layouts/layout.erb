@@ -15,14 +15,18 @@
   <body class="<%= page_classes %>">
     <div class="cover"></div>
 
-    <div class="window">
-      <%= partial "shared/header" %>
+    <div class="window  nano">
+      <div class="content">
+        <%= partial "shared/header" %>
 
-      <%#= yield %>
+        <%= partial "projects" %>
 
-      <%#= partial "shared/footer" %>
+        <%#= yield %>
+
+        <%#= partial "shared/footer" %>
+      </div>
     </div>
   </body>
 
-  <%= javascript_include_tag  "jquery", "modernizr", "sugar", "scripts" %>
+  <%= javascript_include_tag  "jquery", "modernizr", "sugar", "nanoScroller", "scripts" %>
 </html>

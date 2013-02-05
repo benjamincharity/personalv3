@@ -34,22 +34,52 @@ $(function() {
     '31.gif'
   ];
 
-  $('html').css({'background-image': 'url(/i/bg/' + images[Math.floor(Math.random() * images.length)] + ')'});
+  var imageNumber = images[Math.floor(Math.random() * images.length)];
+
+  $('html').css({
+    'background': 'url(/i/texture.png), url(/i/bg/' + imageNumber + ')',
+    'background-position': 'left top, right bottom',
+    'background-repeat': 'no-repeat, no-repeat',
+    'background-size': 'cover, cover'
+  });
 
 
-
-
+  //
+  //
   // toggle the main header location change (active state)
   $('.main-nav').on('click', 'a', function(event) {
-    var $self = $(this);
+    var $self = $(this),
+    $header = $('.main-header'),
+    hash = $self.attr('href'),
+    finalHash = hash.substring(1); // remove #
 
-    $('.main-header').toggleClass('active');
+    switch (finalHash) {
+      case "projects":
+        console.log(finalHash);
+        $header.addClass('active');
+        $('.projects').fadeIn();
+        break;
+      case "about":
+        console.log(finalHash);
+        $header.addClass('active');
+        $('.about').fadeIn();
+        break;
+      case "contact":
+        console.log(finalHash);
+        $header.addClass('active');
+        $('.contact').fadeIn();
+        break;
+      default:
+
+    }
 
     event.preventDefault();
   });
 
 
 
+  //
+  //
   // animate the nav items in
   function showNav() {
     $('.main-nav li a').each(function(i) {
@@ -61,6 +91,8 @@ $(function() {
     });
   }
 
+  //
+  //
   // animate the logo in
   (function() {
     $('.logo').addClass('animated  flipInX');
@@ -71,6 +103,17 @@ $(function() {
 
 
 
+
+  //
+  //
+  // initialize the scrollbars
+  $('.nano').nanoScroller({
+    iOSNativeScrolling: true
+  });
+
+
+  //
+  //
   // Read a page's GET URL variables and return them as an associative array.
   $.extend({
     getUrlVars: function(){

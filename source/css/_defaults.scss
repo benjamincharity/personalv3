@@ -44,10 +44,14 @@ $baseline-px: 16px;
 
 
 
-@mixin animation($property: all, $timing: 300ms) {
+@mixin customTransition($property: all, $timing: 300ms) {
   -webkit-transition: $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition:    $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition:     $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -o-transition:      $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition:         $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+.symbol {
+  font-family: $websymbols;
 }
