@@ -2,9 +2,11 @@
 @import "compass";
 @import "fonts/fonts";
 @import "defaults";
+@import "animations";
 
 // Site - [general]
 @import "site/base";
+@import "site/header";
 
 // Site - [sections]
 

@@ -3,9 +3,7 @@
 // really wide screen
 //
 @media all and (min-width: 71.25em) {
-  .row-container {
-    width: 1140px;
-  }
+
 }
 
 
@@ -36,16 +34,12 @@
 //
 @media all and (max-width: 30em) {
   .main-header {
-    .logo {
-      height: 140px;
-      width: 200px;
-    }
+    padding-top: 20px;
 
     .main-nav {
       font-size: 12px;
 
       li {
-        width: 75px;
         padding: 0;
       }
     }

@@ -41,3 +41,13 @@ $baseline-px: 16px;
         $rem-values: append($rem-values, $value / $baseline-rem); } }
     // Return the property and its list of converted values
     #{$property}: $rem-values; } }
+
+
+
+@mixin animation($property: all, $timing: 300ms) {
+  -webkit-transition: $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition:    $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition:     $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition:      $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition:         $property $timing cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}

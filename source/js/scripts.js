@@ -36,4 +36,57 @@ $(function() {
 
   $('html').css({'background-image': 'url(/i/bg/' + images[Math.floor(Math.random() * images.length)] + ')'});
 
+
+
+
+  // toggle the main header location change (active state)
+  $('.main-nav').on('click', 'a', function(event) {
+    var $self = $(this);
+
+    $('.main-header').toggleClass('active');
+
+    event.preventDefault();
+  });
+
+
+
+  // animate the nav items in
+  function showNav() {
+    $('.main-nav li a').each(function(i) {
+      var $self = $(this);
+
+      (function(i) {
+        $self.addClass('animated  flipInX');
+      }).delay(i * 260);
+    });
+  }
+
+  // animate the logo in
+  (function() {
+    $('.logo').addClass('animated  flipInX');
+    (function() {
+      showNav();
+    }).delay(600);
+  }).delay(600);
+
+
+
+  // Read a page's GET URL variables and return them as an associative array.
+  $.extend({
+    getUrlVars: function(){
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+  {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  return vars;
+    },
+    getUrlVar: function(name){
+      return $.getUrlVars()[name];
+    }
+  });
+
 });
