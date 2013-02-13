@@ -65,34 +65,50 @@
   }
 }
 
-
-
-
-
 .project__roles {
   margin-top: 5px;
   padding-left: 3px;
 
   li {
-    display: inline-block;
-    font-family: $websymbols;
-    @include rem('font-size',30px);
+    display: block;
+    font-family: $goudy;
+    @include rem('font-size',12px);
     -webkit-font-smoothing: antialiased; 
     -moz-font-smoothing:    antialiased; 
     -ms-font-smoothing:     antialiased; 
     -o-font-smoothing:      antialiased; 
     font-smoothing:         antialiased;
-    margin-right: 10px;
 
-    &.abbr-title {
-      display: none;
-      max-width: 40px;
-      min-height: 20px;
+    &.development::before,
+    &.design::before,
+    &.ux::before,
+    &.pm::before {
+      display: inline-block;
+      font-family: $websymbols;
+      @include rem('font-size',20px);
+      position: relative;
+      top: 4px;
+      margin-right: 10px;
+      text-align: right;
+      width: 10px;
     }
 
-    abbr {
-      border-bottom: none;
+    &.development::before {
+      content: ";";
     }
+
+    &.design::before {
+      content: "\00ca"; // Ê
+    }
+
+    &.ux::before {
+      content: "\00dc"; // Ü
+    }
+
+    &.pm::before {
+      content: "K";
+    }
+
   }
 
   .symbol {
