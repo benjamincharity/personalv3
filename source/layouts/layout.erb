@@ -28,5 +28,9 @@
     </div>
   </body>
 
-  <%= javascript_include_tag  "jquery", "modernizr", "sugar", "nanoScroller", "scripts" %>
+  <script id="personTemplate" type="text/template">
+    <strong>{{ name }}</strong> ({{ age }}) - {{ occupation }}
+  </script>
+
+  <%= javascript_include_tag   "underscore", "jquery", "modernizr", "sugar", "backbone", "nanoScroller", "scripts" %>
 </html>

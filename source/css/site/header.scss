@@ -40,7 +40,8 @@
   font-family: Georgia, Times New Roman, Times, serif;
   font-size: 14px;
   letter-spacing: 3px;
-  margin-top: 20px;
+  margin: 20px auto 0;
+  max-width: 440px;
   text-align: center;
 
   li {
@@ -59,7 +60,7 @@
   opacity: 0;
   padding: 6px;
   position: relative;
-    @include customTransition();
+  @include customTransition();
 
 
   &:focus,

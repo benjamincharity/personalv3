@@ -34,14 +34,54 @@ $(function() {
     '31.gif'
   ];
 
-  var imageNumber = images[Math.floor(Math.random() * images.length)];
+  //var imageNumber = images[Math.floor(Math.random() * images.length)];
+
+  var d = new Date();
+  var seconds = d.getSeconds();
 
   $('html').css({
-    'background': 'url(/i/texture.png), url(/i/bg/' + imageNumber + ')',
+    'background': 'url(/i/texture.png), url(/i/bg/' + images[getImageNumber(seconds)] + ')',
     'background-position': 'left top, right bottom',
     'background-repeat': 'no-repeat, no-repeat',
     'background-size': 'cover, cover'
   });
+
+  function getImageNumber(secs) {
+
+    if(secs < images.length) {
+      return secs;
+    } else {
+      return getImageNumber(secs - images.length);
+    }
+
+  }
+
+
+
+  //
+  //
+  // handle the abbr on projects
+  $('.project__roles').on('hover', 'abbr', function() {
+    var $self = $(this),
+    $displayLi = $('.abbr-title'),
+        title = $self.attr('title');
+
+    //$displayLi.html(title);
+    //$displayLi.fadeIn('fast');
+
+    console.log(title);
+
+    //$self.bind('mouseout', function() {
+      //$displayLi.fadeOut('fast');
+      //$displayLi.html('');
+    //});
+
+    event.preventDefault();
+
+  });
+
+
+
 
 
   //
@@ -56,17 +96,17 @@ $(function() {
     switch (finalHash) {
       case "projects":
         console.log(finalHash);
-        $header.addClass('active');
-        $('.projects').fadeIn();
+
+        $('.projects').showListItems();
         break;
       case "about":
         console.log(finalHash);
-        $header.addClass('active');
+
         $('.about').fadeIn();
         break;
       case "contact":
         console.log(finalHash);
-        $header.addClass('active');
+
         $('.contact').fadeIn();
         break;
       default:
@@ -76,6 +116,32 @@ $(function() {
     event.preventDefault();
   });
 
+
+  //
+  //
+  // animate the nav items in
+  //function showProjects() {
+    //$('.projects .future').each(function(i) {
+      //var $self = $(this);
+
+      //(function(i) {
+        //$self.addClass('past');
+      //}).delay(i * 10);
+    //});
+  //}
+
+  jQuery.fn.showListItems = function() {
+      var $elem = $(this[0]), // It's your element
+          items = $elem.find('.future');
+
+    $(items).each(function(i) {
+      var $self = $(this);
+
+      (function(i) {
+        $self.removeClass('future').addClass('animated  flipInX');
+      }).delay(i * 30);
+    });
+  };
 
 
   //

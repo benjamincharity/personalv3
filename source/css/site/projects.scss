@@ -1,28 +1,38 @@
 // projects wrapper
 .projects {
-  color: $black;
-  display: none;
+  color: $white;
+  display: block;
   height: 400px;
   margin: 40px auto;
-  max-width: 600px;
-  width: 60%;
+  //max-width: 600px;
+  width: 80%;
+
+
+  // class to hide <li>s prior to loading section data
+  .future {
+    opacity: 0;
+  }
 }
 
 // single project
 .project {
-  background-color: rgba($white,1);
+  background-color: rgba($black,0.2);
   background-position: right bottom;
   background-repeat: no-repeat;
-  @include box-shadow();
+  //@include box-shadow();
   @include border-radius(1px);
+  border: 1px solid rgba($white, 0.3);
+  overflow: hidden;
   padding: 12px;
   position: relative;
   margin-bottom: 40px;
   height: 200px;
+  //@include customTransition(all, 100ms);
+  @include transition-duration();
   width: 100%;
 
   h1 {
-    color: rgba($black,0.8);
+    color: rgba($white,0.8);
     padding: 0 0 6px 0;
     margin-left: -2px;
     @include frontageFont();
@@ -33,11 +43,11 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 70%;
+    width: 50%;
   }
 
   .project__url {
-    color: $mid-gray;
+    color: $light-gray;
     @include rem('font-size',11px);
     font-family: $goudy;
     font-style: italic;
@@ -45,54 +55,44 @@
     position: absolute;
     bottom: 2px;
     left: 10px;
+    text-decoration: underline;
+    @include customTransition();
 
     &:focus,
     &:hover {
-      background-color: rgba($black, 0.1);
-      text-decoration: underline;
+      background-color: rgba($black, 0.6);
     }
   }
 }
+
+
+
+
 
 .project__roles {
   margin-top: 5px;
   padding-left: 3px;
 
   li {
-    display: block;
-    font-family: $goudy;
-    @include rem('font-size',12px);
+    display: inline-block;
+    font-family: $websymbols;
+    @include rem('font-size',30px);
+    -webkit-font-smoothing: antialiased; 
+    -moz-font-smoothing:    antialiased; 
+    -ms-font-smoothing:     antialiased; 
+    -o-font-smoothing:      antialiased; 
+    font-smoothing:         antialiased;
+    margin-right: 10px;
 
-    &.development::before,
-    &.design::before,
-    &.ux::before,
-    &.pm::before {
-      display: inline-block;
-      font-family: $websymbols;
-      @include rem('font-size',20px);
-      position: relative;
-      top: 4px;
-      margin-right: 10px;
-      text-align: center;
-      width: 10px;
+    &.abbr-title {
+      display: none;
+      max-width: 40px;
+      min-height: 20px;
     }
 
-    &.development::before {
-      content: ";";
+    abbr {
+      border-bottom: none;
     }
-
-    &.design::before {
-      content: "\00ca"; // Ê
-    }
-
-    &.ux::before {
-      content: "\00dc"; // Ü
-    }
-
-    &.pm::before {
-      content: "K";
-    }
-
   }
 
   .symbol {
