@@ -41,7 +41,6 @@ $(function() {
 
   $('html').css({
     'background': 'url(/i/texture.png), url(/i/bg/' + images[getImageNumber(seconds)] + ')',
-    'background-position': 'left top, right bottom',
     'background-repeat': 'no-repeat, no-repeat',
     'background-size': 'cover, cover'
   });
