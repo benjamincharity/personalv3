@@ -14,7 +14,10 @@
   </head>
 
   <body class="<%= page_classes %>">
-    <div class="cover"></div>
+    <div class="cover  active">
+      <img src="" alt="" />
+      <img src="i/texture.png" alt="" />
+    </div>
 
     <div class="window  nano">
       <div class="content">
@@ -28,5 +31,5 @@
     </div>
   </body>
 
-  <%= javascript_include_tag "jquery", "modernizr", "sugar", "nanoScroller", "scripts" %>
+  <%= javascript_include_tag "jquery", "bg", "modernizr", "sugar", "imagesLoaded", "nanoScroller", "scripts" %>
 </html>
