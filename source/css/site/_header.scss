@@ -1,44 +1,29 @@
 .main-header {
-  padding-top: 100px;
+  padding-top: 20px;
   margin: 0 auto;
   @include customTransition();
-  width: 50%;
+
+  // class to push content down UNTIL the nav is interacted with
+  &.primed {
+    padding-top: 140px;
+  }
 
   .logo {
     opacity: 0;
     margin: 0 auto;
     max-width: 300px;
     @include customTransition();
-    width: 100%;
+    width: 50%;
 
     img {
       max-height: 100%;
       max-width: 100%;
     }
   }
-
-  // active state of the header
-  //&.active {
-    //padding-top: 0;
-
-    //.logo {
-      //height: 100px;
-      //margin: 0;
-      //position: absolute;
-      //left: 0;
-      //top: 0;
-      //width: 200px;
-    //}
-
-    //.main-nav {
-      //text-align: left;
-    //}
-  //}
 }
 
 .main-nav {
   font-family: Georgia, Times New Roman, Times, serif;
-  font-size: 14px;
   letter-spacing: 3px;
   margin: 20px auto 0;
   max-width: 440px;
@@ -46,16 +31,15 @@
 
   li {
     display: inline-block;
-    padding: 0 6px;
+    padding: 0;
     width: 32%;
-
   }
 
 }
 .main-nav-item {
   color: $white;
   font-family: $goudy;
-  font-style: italic;
+  @include rem('font-size',14px);
   font-weight: 100;
   opacity: 0;
   padding: 6px;
@@ -67,6 +51,17 @@
   &:hover {
     top: 10px;
     padding-top: 20px;
+  }
+}
+
+.touch {
+  .main-nav-item {
+    &:focus,
+    &:hover {
+      padding-top: 6px;
+      text-decoration: underline;
+      top: 0;
+    }
   }
 }
 

@@ -9,10 +9,11 @@
 // Site - [general]
 @import "site/base";
 @import "site/header";
-@import "site/projects";
 
 // Site - [sections]
-
+@import "site/projects";
+@import "site/about";
+@import "site/contact";
 
 //@import "dev";
 @import "media_queries";

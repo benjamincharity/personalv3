@@ -1,21 +1,21 @@
 $(function() {
 
   var images = [
-    //'1.gif',
+    '1.gif',
     '2.gif',
-    //'3.gif',
-    //'4.gif',
-    //'5.gif',
-    //'6.gif',
+    '3.gif',
+    '4.gif',
+    '5.gif',
+    '6.gif',
     '7.gif',
     '8.gif',
     '9.gif',
     '10.gif',
     '11.gif',
-    //'12.gif',
-    //'13.gif',
-    //'14.gif',
-    //'15.gif',
+    '12.gif',
+    '13.gif',
+    '14.gif',
+    '15.gif',
     '16.gif',
     '17.gif',
     '18.gif',
@@ -26,12 +26,36 @@ $(function() {
     '23.gif',
     '24.gif',
     '25.gif',
-    '26.gif',
-    '27.gif',
-    //'28.gif',
-    '29.gif',
-    '30.gif',
-    '31.gif'
+    '26.gif'
+  ];
+
+  var mobileImages = [
+    '1.gif',
+    '2.gif',
+    '3.gif',
+    '4.gif',
+    '5.gif',
+    '6.gif',
+    //'7.gif',
+    '8.gif',
+    '9.gif',
+    '10.gif',
+    //'11.gif',
+    '12.gif',
+    //'13.gif',
+    '14.gif',
+    //'15.gif',
+    //'16.gif',
+    '17.gif',
+    '18.gif',
+    '19.gif',
+    '20.gif',
+    '21.gif',
+    //'22.gif',
+    //'23.gif',
+    //'24.gif',
+    //'25.gif',
+    //'26.gif'
   ];
 
   //var imageNumber = images[Math.floor(Math.random() * images.length)];
@@ -39,11 +63,22 @@ $(function() {
   var d = new Date();
   var seconds = d.getSeconds();
 
-  $('html').css({
-    'background': 'url(/i/texture.png), url(/i/bg/' + images[getImageNumber(seconds)] + ')',
-    'background-repeat': 'no-repeat, no-repeat',
-    'background-size': 'cover, cover'
-  });
+
+  // if it's a touch device, only load the mobile image array with lighter images
+  if( $('html').hasClass('touch') ) {
+    $('html').css({
+      'background': 'url(/i/texture.png), url(/i/bg/' + mobileImages[getImageNumber(seconds)] + ')',
+      'background-repeat': 'no-repeat, no-repeat',
+      'background-size': 'cover, cover'
+    });
+  } else {
+    $('html').css({
+      'background': 'url(/i/texture.png), url(/i/bg/' + images[getImageNumber(seconds)] + ')',
+      'background-repeat': 'no-repeat, no-repeat',
+      'background-size': 'cover, cover'
+    });
+  }
+
 
   function getImageNumber(secs) {
 
@@ -57,56 +92,69 @@ $(function() {
 
 
 
-  //
-  //
-  // handle the abbr on projects
-  $('.project__roles').on('hover', 'abbr', function() {
-    var $self = $(this),
-    $displayLi = $('.abbr-title'),
-        title = $self.attr('title');
-
-    //$displayLi.html(title);
-    //$displayLi.fadeIn('fast');
-
-    console.log(title);
-
-    //$self.bind('mouseout', function() {
-      //$displayLi.fadeOut('fast');
-      //$displayLi.html('');
-    //});
-
-    event.preventDefault();
-
-  });
-
-
-
-
 
   //
   //
   // toggle the main header location change (active state)
   $('.main-nav').on('click', 'a', function(event) {
     var $self = $(this),
-    $header = $('.main-header'),
-    hash = $self.attr('href'),
+      $header = $('.main-header'),
+    $projects = $('.js-projects'),
+       $about = $('.js-about'),
+     $contact = $('.js-contact');
+
+     var hash = $self.attr('href'),
     finalHash = hash.substring(1); // remove #
+
+
+    // if this is the first time...remove the primed class
+    if( $header.hasClass('primed') ) {
+      $header.removeClass('primed');
+    }
+
 
     switch (finalHash) {
       case "projects":
-        console.log(finalHash);
+        if( $projects.hasClass('active') ) {
+          $projects.hideListItems();
+          $header.addClass('primed');
+        } else if( $about.hasClass('active') | $contact.hasClass('active') ) {
+          $about.hideListItems();
+          $contact.hideListItems();
 
-        $('.projects').showListItems();
+          (function(i) {
+            $projects.showListItems();
+          }).delay(300);
+        } else {
+          $projects.showListItems();
+        }
         break;
-      case "about":
-        console.log(finalHash);
+      //case "about":
+        //if( $projects.hasClass('active') | $about.hasClass('active') | $contact.hasClass('active') ) {
+          //$projects.hideListItems();
+          //$contact.hideListItems();
 
-        $('.about').fadeIn();
-        break;
+          //(function(i) {
+            //$about.showListItems();
+          //}).delay(300);
+        //} else {
+          //$about.showListItems();
+        //}
+        //break;
       case "contact":
-        console.log(finalHash);
+        if( $contact.hasClass('active') ) {
+          $contact.hideListItems();
+          $header.addClass('primed');
+        } else if( $about.hasClass('active') | $projects.hasClass('active') ) {
+          $about.hideListItems();
+          $projects.hideListItems();
 
-        $('.contact').fadeIn();
+          (function(i) {
+            $contact.showListItems();
+          }).delay(300);
+        } else {
+          $contact.showListItems();
+        }
         break;
       default:
 
@@ -116,30 +164,39 @@ $(function() {
   });
 
 
-  //
-  //
-  // animate the nav items in
-  //function showProjects() {
-    //$('.projects .future').each(function(i) {
-      //var $self = $(this);
-
-      //(function(i) {
-        //$self.addClass('past');
-      //}).delay(i * 10);
-    //});
-  //}
 
   jQuery.fn.showListItems = function() {
       var $elem = $(this[0]), // It's your element
           items = $elem.find('.future');
 
+    $elem.addClass('active');
+
     $(items).each(function(i) {
       var $self = $(this);
 
       (function(i) {
-        $self.removeClass('future').addClass('animated  flipInX');
+        $self.removeClass('future').addClass('animated');
       }).delay(i * 30);
     });
+  };
+
+  jQuery.fn.hideListItems = function() {
+      var $elem = $(this[0]), // It's your element
+          items = $elem.find('.animated');
+
+    $(items).each(function(i) {
+      var $self = $(this);
+
+      (function(i) {
+        $self.addClass('fadeOutUp');
+      }).delay(i * 40);
+    });
+
+    (function(i) {
+      $elem.removeClass('active');
+      items.removeClass('fadeOutUp animated').addClass('future');
+    }).delay(300);
+
   };
 
 
@@ -152,7 +209,7 @@ $(function() {
 
       (function(i) {
         $self.addClass('animated  flipInX');
-      }).delay(i * 260);
+      }).delay(i * 160);
     });
   }
 

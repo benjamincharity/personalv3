@@ -208,3 +208,11 @@ a:link {
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+html, body {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}

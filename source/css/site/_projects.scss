@@ -1,12 +1,14 @@
 // projects wrapper
 .projects {
   color: $white;
-  display: block;
+  display: none;
   height: 400px;
   margin: 40px auto;
-  //max-width: 600px;
-  width: 80%;
+  width: 92%;
 
+  &.active {
+    display: block;
+  }
 
   // class to hide <li>s prior to loading section data
   .future {
@@ -14,28 +16,44 @@
   }
 }
 
+// <ul>
+.projects__list {
+  @include clear();
+
+  >li {
+    float: left;
+    margin: 2% 1%;
+    width: 98%;
+  }
+}
+
 // single project
 .project {
-  background-color: rgba($black,0.2);
-  background-position: right bottom;
+  background-color: rgba(200,200,200,0.2);
+  background-position: center;
   background-repeat: no-repeat;
-  //@include box-shadow();
+  background-size: 100%;
   @include border-radius(1px);
-  border: 1px solid rgba($white, 0.3);
-  overflow: hidden;
+  border: 1px solid rgba(#000, 0.2);
+  @include clear();
+  height: auto;
   padding: 12px;
   position: relative;
-  margin-bottom: 40px;
-  height: 200px;
-  //@include customTransition(all, 100ms);
-  @include transition-duration();
-  width: 100%;
 
   h1 {
+    color: rgba($white, 1);
+    @include frontageBoldFont();
+    padding: 0 0 2px 0;
+    margin-left: -2px;
+  }
+
+  h2 {
     color: rgba($white,0.8);
+    @include frontageFont();
+    @include rem('font-size',14px);
+    letter-spacing: -2px;
     padding: 0 0 6px 0;
     margin-left: -2px;
-    @include frontageFont();
   }
 
   .project__hero {
@@ -48,13 +66,10 @@
 
   .project__url {
     color: $light-gray;
+    display: block;
     @include rem('font-size',11px);
     font-family: $goudy;
-    font-style: italic;
     padding: 2px 6px;
-    position: absolute;
-    bottom: 2px;
-    left: 10px;
     text-decoration: underline;
     @include customTransition();
 
@@ -66,6 +81,7 @@
 }
 
 .project__roles {
+  margin-bottom: 16px;
   margin-top: 5px;
   padding-left: 3px;
 
@@ -73,10 +89,10 @@
     display: block;
     font-family: $goudy;
     @include rem('font-size',12px);
-    -webkit-font-smoothing: antialiased; 
-    -moz-font-smoothing:    antialiased; 
-    -ms-font-smoothing:     antialiased; 
-    -o-font-smoothing:      antialiased; 
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing:    antialiased;
+    -ms-font-smoothing:     antialiased;
+    -o-font-smoothing:      antialiased;
     font-smoothing:         antialiased;
 
     &.development::before,
@@ -111,10 +127,4 @@
 
   }
 
-  .symbol {
-    display: inline;
-    @include rem('font-size',30px);
-    //line-height: 1em;
-    margin-bottom: 12px;
-  }
 }

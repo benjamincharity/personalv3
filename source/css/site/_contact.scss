@@ -1,0 +1,35 @@
+// contact wrapper
+.contact {
+  display: none;
+  padding-top: 40px;
+  text-align: center;
+
+  // class to hide <li>s prior to loading section data
+  .future {
+    opacity: 0;
+  }
+
+  &.active {
+    display: block;
+  }
+}
+
+// <ul>
+.contact__list {
+  li {
+
+  }
+
+  a {
+    color: $white;
+    display: block;
+    @include frontageFont();
+    padding: 4px 0;
+    @include customTransition();
+
+    &:focus,
+    &:hover {
+      padding-left: 10px;
+    }
+  }
+}

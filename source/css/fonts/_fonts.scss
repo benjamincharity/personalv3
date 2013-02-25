@@ -67,3 +67,13 @@ $websymbols: websymbols;
   -o-font-smoothing:      antialiased; 
   font-smoothing:         antialiased;
 }
+
+@mixin frontageBoldFont() {
+  font-family: $frontageBold;
+  font-weight: 100;
+  -webkit-font-smoothing: antialiased; 
+  -moz-font-smoothing:    antialiased; 
+  -ms-font-smoothing:     antialiased; 
+  -o-font-smoothing:      antialiased; 
+  font-smoothing:         antialiased;
+}

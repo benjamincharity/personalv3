@@ -1,30 +1,99 @@
+
 //
 //
-// really wide screen
+// everything above iphone landscape > above 568px
 //
-@media all and (min-width: 71.25em) {
+@media all and (min-width: 568px) {
+  .projects {
+    width: 80%;
+
+    .project {
+      height: 200px;
+    }
+  }
+
+  // <ul> - 2x2 list
+  .projects__list {
+    >li {
+      margin: 2%;
+      width: 46%;
+
+      &:nth-of-type(even) {
+        margin-right: 1%;
+      }
+
+      &:nth-of-type(odd) {
+        margin-left: 1%;
+      }
+    }
+  }
 
 }
 
 
 
-//
-//
-// everything up to laptop/desktop
-//
-@media all and (max-width: 71.25em) {
 
+
+//
+//
+// everything above ipad landscape
+//
+@media all and (min-width: 770px) {
+
+  .main-header {
+    padding-top: 50px;
+
+    .main-nav {
+      li {
+        padding: 0 6px;
+      }
+    }
+  }
 }
 
 
 
-//
-//
-// everything up to ipad portrait
-//
-@media all and (max-width: 48em) {
 
+
+//
+//
+// Desktop > Above 1140px
+//
+@media all and (min-width: 1140px) {
+
+  // <ul>
+  .projects__list {
+    //border: 3px solid red;
+
+    >li {
+      width: 30%;
+
+      &:nth-of-type(even) {
+        margin-right: 2%;
+      }
+
+      &:nth-of-type(odd) {
+        margin-left: 2%;
+      }
+
+      // 3,6,9,12...
+      &:nth-of-type(3n) {
+        //border: 1px solid red;
+        margin-right: 1%;
+      }
+
+      // 1,4,7,10...
+      &:nth-of-type(3n-2) {
+        //border: 1px solid blue;
+        margin-left: 1%;
+      }
+    }
+  }
 }
+
+
+
+
 
 
 
@@ -33,30 +102,6 @@
 // up to iphone landscape
 //
 @media all and (max-width: 30em) {
-  .main-header {
-    padding-top: 20px;
-
-    .main-nav {
-      font-size: 12px;
-
-      li {
-        padding: 0;
-      }
-    }
-  }
-
-  .projects {
-    width: 92%;
-  }
-}
-
-
-
-//
-//
-// small screens
-//
-@media all and (max-width: 20em) {
 
 }
 
