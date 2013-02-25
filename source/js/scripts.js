@@ -1,94 +1,5 @@
 $(function() {
 
-  //var images = [
-    //'1.gif',
-    //'2.gif',
-    //'3.gif',
-    //'4.gif',
-    //'5.gif',
-    //'6.gif',
-    //'7.gif',
-    //'8.gif',
-    //'9.gif',
-    //'10.gif',
-    //'11.gif',
-    //'12.gif',
-    //'13.gif',
-    //'14.gif',
-    //'15.gif',
-    //'16.gif',
-    //'17.gif',
-    //'18.gif',
-    //'19.gif',
-    //'20.gif',
-    //'21.gif',
-    //'22.gif',
-    //'23.gif',
-    //'24.gif',
-    //'25.gif',
-    //'26.gif'
-  //];
-
-  //var mobileImages = [
-    //'1.gif',
-    //'2.gif',
-    //'3.gif',
-    //'4.gif',
-    //'5.gif',
-    //'6.gif',
-    ////'7.gif',
-    //'8.gif',
-    //'9.gif',
-    //'10.gif',
-    ////'11.gif',
-    //'12.gif',
-    ////'13.gif',
-    //'14.gif',
-    ////'15.gif',
-    ////'16.gif',
-    //'17.gif',
-    //'18.gif',
-    //'19.gif',
-    //'20.gif',
-    //'21.gif',
-    ////'22.gif',
-    ////'23.gif',
-    ////'24.gif',
-    ////'25.gif',
-    ////'26.gif'
-  //];
-
-  //var d = new Date();
-  //var seconds = d.getSeconds();
-
-  //// if it's a touch device, only load the mobile image array with lighter images
-  //if( $('html').hasClass('touch') ) {
-    //$('html').css({
-      //'background': 'url(i/texture.png), url(i/bg/' + mobileImages[getImageNumber(seconds)] + ')',
-      //'background-repeat': 'no-repeat, no-repeat',
-      //'background-size': 'cover, cover'
-    //});
-  //} else {
-    //$('html').css({
-      //'background': 'url(i/texture.png), url(i/bg/' + images[getImageNumber(seconds)] + ')',
-      //'background-repeat': 'no-repeat, no-repeat',
-      //'background-size': 'cover, cover'
-    //});
-  //}
-
-  //function getImageNumber(secs) {
-
-    //if(secs < images.length) {
-      //return secs;
-    //} else {
-      //return getImageNumber(secs - images.length);
-    //}
-
-  //}
-
-
-
-
   //
   //
   // toggle the main header location change (active state)
@@ -126,16 +37,6 @@ $(function() {
         }
         break;
       //case "about":
-        //if( $projects.hasClass('active') | $about.hasClass('active') | $contact.hasClass('active') ) {
-          //$projects.hideListItems();
-          //$contact.hideListItems();
-
-          //(function(i) {
-            //$about.showListItems();
-          //}).delay(300);
-        //} else {
-          //$about.showListItems();
-        //}
         //break;
       case "contact":
         if( $contact.hasClass('active') ) {

@@ -10,6 +10,8 @@
   }
 
   .logo {
+    // included to prefetch font
+    font-family: $frontageBold;
     opacity: 0;
     margin: 0 auto;
     max-width: 300px;
