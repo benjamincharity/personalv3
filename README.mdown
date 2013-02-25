@@ -4,3 +4,12 @@ Keep it fresh.
 
 - - -
 
+http://daneden.me/animate/
+nanoscroller
+modernizr
+jquery
+sugar
+raphael icons
+frontage regular
+frontage bold
+http://middlemanapp.com

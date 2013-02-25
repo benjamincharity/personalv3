@@ -6,6 +6,7 @@
   // class to push content down UNTIL the nav is interacted with
   &.primed {
     padding-top: 140px;
+    @include customTransition(all 1000ms);
   }
 
   .logo {

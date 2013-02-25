@@ -176,7 +176,7 @@ $(function() {
 
       (function(i) {
         $self.removeClass('future').addClass('animated');
-      }).delay(i * 30);
+      }).delay(i * 26);
     });
   };
 
@@ -192,9 +192,12 @@ $(function() {
       }).delay(i * 40);
     });
 
-    (function(i) {
+    (function() {
       $elem.removeClass('active');
-      items.removeClass('fadeOutUp animated').addClass('future');
+
+      (function() {
+        items.removeClass('fadeOutUp animated').addClass('future');
+      }).delay(100);
     }).delay(300);
 
   };
