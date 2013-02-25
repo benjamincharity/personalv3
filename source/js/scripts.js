@@ -67,13 +67,13 @@ $(function() {
   // if it's a touch device, only load the mobile image array with lighter images
   if( $('html').hasClass('touch') ) {
     $('html').css({
-      'background': 'url(/i/texture.png), url(/i/bg/' + mobileImages[getImageNumber(seconds)] + ')',
+      'background': 'url(i/texture.png), url(i/bg/' + mobileImages[getImageNumber(seconds)] + ')',
       'background-repeat': 'no-repeat, no-repeat',
       'background-size': 'cover, cover'
     });
   } else {
     $('html').css({
-      'background': 'url(/i/texture.png), url(/i/bg/' + images[getImageNumber(seconds)] + ')',
+      'background': 'url(i/texture.png), url(i/bg/' + images[getImageNumber(seconds)] + ')',
       'background-repeat': 'no-repeat, no-repeat',
       'background-size': 'cover, cover'
     });
