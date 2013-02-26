@@ -19,7 +19,7 @@ $(function() {
     '16.gif',
     '17.gif',
     '18.gif',
-    '19.gif',
+    //'19.gif',
     '20.gif',
     '21.gif',
     '22.gif',
