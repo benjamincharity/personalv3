@@ -17,13 +17,14 @@ body {
 .window {
   position: relative;
   height: 100%;
+  margin: 0 auto;
   max-width: 1400px;
   width: 100%;
   z-index: 1;
 }
 
 .cover {
-  background-color: #fff;
+  background: #fff url('/i/loader.gif') center no-repeat;
   color: transparent;
   font-size: 0px;
   height: 100%;
