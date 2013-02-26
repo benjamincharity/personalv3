@@ -39,7 +39,7 @@
   @include border-radius(1px);
   border: 1px solid rgba(#000, 0.2);
   @include clear();
-  height: auto;
+  height: 180px;
   padding: 12px;
   position: relative;
 
@@ -69,10 +69,10 @@
 
   .project__url {
     color: $light-gray;
-    display: block;
+    display: inline-block;
     @include rem('font-size',11px);
     font-family: $goudy;
-    padding: 2px 6px;
+    padding: 4px 6px;
     text-decoration: underline;
     @include customTransition();
 
