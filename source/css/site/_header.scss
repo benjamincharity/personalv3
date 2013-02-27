@@ -12,37 +12,37 @@
   .logo {
     // included to prefetch font
     font-family: $frontageBold;
-    opacity: 0;
+    //opacity: 0;
     margin: 0 auto;
     max-width: 300px;
     @include customTransition();
     width: 50%;
   }
 
-  #logo {
+  .logo__svg {
     display: block;
     margin: auto;
-    width: 100%;
     max-height: 200px;
+    width: 100%;
 
-    .inner_border {
+    .inner-border {
       fill-opacity: 0;
-      stroke: #ffffff;
+      stroke: #fff;
       stroke-width: 4;
     }
 
-    .outer_border {
+    .outer-border {
       fill-opacity: 0;
-      stroke: #ffffff;
+      stroke: #fff;
       stroke-width: 7;
     }
 
     .benjamin {
-      fill: #ffffff;
+      fill: #fff;
     }
 
     .charity {
-      fill: #ffffff;
+      fill: #fff;
     }
 
   }
@@ -72,13 +72,15 @@
   font-family: $goudy;
   @include rem('font-size',14px);
   font-weight: 100;
-  opacity: 0;
+  //opacity: 0;
   padding: 6px;
   position: relative;
+  // this needs to be set to allow a transition to top: 10px on hover
+  top: 0;
   @include customTransition();
 
 
-  &:focus,
+  //&:focus,
   &:hover {
     top: 10px;
     padding-top: 20px;
