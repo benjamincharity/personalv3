@@ -12,11 +12,17 @@
   .logo {
     // included to prefetch font
     font-family: $frontageBold;
-    //opacity: 0;
+    opacity: 1;
     margin: 0 auto;
     max-width: 300px;
     @include customTransition();
     width: 50%;
+
+    // initial loading state. removing the opacity was the only way to kill
+    // the firefox flicker bug when the mouse entered/exited the window
+    &.initial {
+      opacity: 0;
+    }
   }
 
   .logo__svg {
@@ -63,7 +69,12 @@
   li {
     display: inline-block;
     padding: 0;
+    opacity: 0;
     width: 32%;
+
+    //&.animated {
+      //opacity: 1;
+    //}
   }
 
 }
