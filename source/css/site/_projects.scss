@@ -69,7 +69,7 @@
 
   .project__url {
     color: $light-gray;
-    display: inline-block;
+    display: block;
     @include rem('font-size',11px);
     font-family: $goudy;
     padding: 4px 6px;

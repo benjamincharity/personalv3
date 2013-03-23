@@ -26,7 +26,10 @@ $(function() {
     '23.gif',
     '24.gif',
     '25.gif',
-    '26.gif'
+    '26.gif',
+    '27.gif',
+    '28.gif',
+    '29.gif'
   ];
 
   var mobileImages = [
@@ -55,7 +58,10 @@ $(function() {
     //'23.gif',
     //'24.gif',
     //'25.gif',
-    //'26.gif'
+    //'26.gif',
+    '27.gif',
+    //'28.gif',
+    //'29.gif'
   ];
 
         var d = new Date(),
