@@ -150,8 +150,21 @@ $(function() {
           $projects.showListItems();
         }
         break;
-      //case "about":
-        //break;
+      case "about":
+        if( $about.hasClass('active') ) {
+          $about.hideListItems();
+          $header.addClass('primed');
+        } else if( $projects.hasClass('active') | $contact.hasClass('active') ) {
+          $projects.hideListItems();
+          $contact.hideListItems();
+
+          (function(i) {
+            $about.showListItems();
+          }).delay(300);
+        } else {
+          $about.showListItems();
+        }
+        break;
       case "contact":
         if( $contact.hasClass('active') ) {
           $contact.hideListItems();
