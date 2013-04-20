@@ -1,7 +1,7 @@
 $(function() {
 
   var images = [
-    '1.gif',
+    //'1.gif',
     '2.gif',
     '3.gif',
     '4.gif',
@@ -20,9 +20,9 @@ $(function() {
     '17.gif',
     '18.gif',
     //'19.gif',
-    '20.gif',
+    //'20.gif',
     '21.gif',
-    '22.gif',
+    //'22.gif',
     '23.gif',
     '24.gif',
     '25.gif',
@@ -33,7 +33,7 @@ $(function() {
   ];
 
   var mobileImages = [
-    '1.gif',
+    //'1.gif',
     '2.gif',
     '3.gif',
     '4.gif',
@@ -52,7 +52,7 @@ $(function() {
     '17.gif',
     '18.gif',
     '19.gif',
-    '20.gif',
+    //'20.gif',
     '21.gif',
     //'22.gif',
     //'23.gif',
