@@ -15,7 +15,8 @@
   color: $white;
   display: none;
   font-weight: 100;
-  margin-top: 3em;
+  margin: 3em auto 0;
+  max-width: 62.5em;
 
   &.active {
     display: block;
@@ -101,6 +102,60 @@
         @include rem('margin-left',-63px);
         @include rem('width',126px);
       }
+    }
+  }
+}
+
+// <article> list of used tools etc
+.about__components {
+  float: left;
+  @include rem('margin-top',32px);
+  padding: 0 2% 1em;
+  text-align: center;
+  width: 100%;
+
+  //&:focus,
+  //&:hover {
+    //ul {
+      //opacity: 1;
+    //}
+  //}
+
+  h4 {
+    font-family: $helvetica;
+    @include rem('font-size',11px);
+    font-style: none;
+    font-weight: 100;
+    @include rem('letter-spacing',2px);
+    opacity: 0.6;
+    margin-bottom: 1.4em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    @include clear;
+    @include column-count(3);
+    @include column-gap(1em);
+    @include column-rule-width(0);
+    opacity: 0.5;
+    @include customTransition(opacity, 200ms);
+  }
+
+  li {
+    //float: left;
+    font-family: $goudy;
+    @include rem('font-size',12px);
+    @include rem('letter-spacing',1px);
+    margin: .5em 0;
+  }
+
+  a {
+    color: $white;
+    display: block;
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

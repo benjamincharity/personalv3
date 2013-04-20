@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link type="text/plain" rel="author" href="humans.txt" />
 
     <title><%= "Benjamin Charity | Front-End Engineer" %></title>
+    <meta name="description" content="Responsive design and development, UI development, Interaction design, front-end development.">
 
     <%= stylesheet_link_tag "site" %>
   </head>
@@ -52,5 +54,20 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
+  </script>
+
+  <script type="text/javascript">
+    var GoSquared = {acct: "GSN-969651-C"};
+    (function(w){
+      function gs(){
+        w._gstc_lt = +new Date;
+        var d = document, g = d.createElement("script");
+        g.type = "text/javascript";
+        g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+        var s = d.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(g, s);
+      }
+      w.addEventListener ? w.addEventListener("load", gs, false) : w.attachEvent("onload", gs);
+    })(window);
   </script>
 </html>
