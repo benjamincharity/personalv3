@@ -24,7 +24,7 @@ $(function() {
     '21',
     //'22',
     '23',
-    '24',
+    //'24',
     '25',
     '26',
     '27',
@@ -101,7 +101,7 @@ $(function() {
         $cover.removeClass('active');
         showLogo();
 
-        $('html').switchBackground();
+        $('body').switchBackground();
       }
     });
   }
@@ -218,7 +218,7 @@ $(function() {
 
     img.imagesLoaded({
       done: function() {
-        $('html').css({
+        $elem.css({
           'background': 'url(i/texture.png), url(i/bg/' + images[getImageNumber(seconds)] + '.gif)',
           'background-repeat': 'no-repeat, no-repeat',
           'background-size': 'cover, cover'
