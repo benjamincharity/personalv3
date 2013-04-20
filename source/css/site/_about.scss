@@ -32,6 +32,16 @@
   width: 50%;
 }
 
+.js {
+  .about__portrait {
+    opacity: 0;
+
+    &.animated {
+      opacity: 1;
+    }
+  }
+}
+
 // when we know javascript is enabled
 // set the visibility to hidden
 .js {

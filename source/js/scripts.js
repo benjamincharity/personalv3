@@ -258,9 +258,13 @@ $(function() {
     (function() {
       $elem.removeClass('active');
 
-      (function() {
-        items.removeClass('fadeOutUp animated').addClass('future');
-      }).delay(100);
+      $(items).each(function(i) {
+        var $self = $(this);
+
+        (function(i) {
+          $self.removeClass('fadeOutUp animated').addClass('future');
+        }).delay(i * 50);
+      });
     }).delay(300);
 
   };
