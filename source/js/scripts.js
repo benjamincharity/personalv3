@@ -159,10 +159,27 @@ $(function() {
           $contact.hideListItems();
 
           (function(i) {
+            $('.about__portrait').addClass('animated');
+          }).delay(100);
+
+          (function(i) {
             $about.showListItems();
-          }).delay(300);
+          }).delay(200);
+
         } else {
           $about.showListItems();
+
+          (function(i) {
+            $('.about__portrait').addClass('animated');
+
+            $('.about__history li').each(function(i) {
+              var $self = $(this);
+
+              (function(i) {
+                $self.addClass('animated');
+              }).delay(i * 26);
+            });
+          }).delay(300);
         }
         break;
       case "contact":
