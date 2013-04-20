@@ -1,68 +1,68 @@
 $(function() {
 
   var images = [
-    //'1.gif',
-    '2.gif',
-    '3.gif',
-    '4.gif',
-    '5.gif',
-    '6.gif',
-    '7.gif',
-    '8.gif',
-    '9.gif',
-    '10.gif',
-    //'11.gif',
-    '12.gif',
-    '13.gif',
-    '14.gif',
-    //'15.gif',
-    '16.gif',
-    '17.gif',
-    '18.gif',
-    //'19.gif',
-    //'20.gif',
-    '21.gif',
-    //'22.gif',
-    '23.gif',
-    '24.gif',
-    '25.gif',
-    '26.gif',
-    '27.gif',
-    '28.gif',
-    '29.gif'
+    //'1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    //'11',
+    '12',
+    '13',
+    '14',
+    //'15',
+    '16',
+    '17',
+    '18',
+    //'19',
+    //'20',
+    '21',
+    //'22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29'
   ];
 
-  var mobileImages = [
-    //'1.gif',
-    '2.gif',
-    '3.gif',
-    '4.gif',
-    '5.gif',
-    '6.gif',
-    //'7.gif',
-    '8.gif',
-    '9.gif',
-    '10.gif',
-    //'11.gif',
-    '12.gif',
-    //'13.gif',
-    '14.gif',
-    //'15.gif',
-    //'16.gif',
-    '17.gif',
-    '18.gif',
-    '19.gif',
-    //'20.gif',
-    '21.gif',
-    //'22.gif',
-    //'23.gif',
-    //'24.gif',
-    //'25.gif',
-    //'26.gif',
-    '27.gif',
-    //'28.gif',
-    //'29.gif'
-  ];
+  //var mobileImages = [
+    ////'1',
+    //'2',
+    //'3',
+    //'4',
+    //'5',
+    //'6',
+    ////'7',
+    //'8',
+    //'9',
+    //'10',
+    ////'11',
+    //'12',
+    ////'13',
+    //'14',
+    ////'15',
+    ////'16',
+    //'17',
+    //'18',
+    //'19',
+    ////'20',
+    //'21',
+    ////'22',
+    ////'23',
+    ////'24',
+    ////'25',
+    ////'26',
+    //'27',
+    ////'28',
+    ////'29'
+  //];
 
         var d = new Date(),
       seconds = d.getSeconds();
@@ -73,12 +73,12 @@ $(function() {
   //
   // if it's a touch device, only load the mobile image array with the lighter images
   if( $('html').hasClass('touch') ) {
-    $coverImage.attr('src', 'i/bg/' + mobileImages[getImageNumber(seconds)]);
+    $coverImage.attr('src', 'i/bg/' + images[getImageNumber(seconds)] + '.jpg');
 
     $cover.imagesLoaded({
       done: function() {
         $('html').css({
-          'background': 'url(i/texture.png), url(i/bg/' + mobileImages[getImageNumber(seconds)] + ')',
+          'background': 'url(i/texture.png), url(i/bg/' + mobileImages[getImageNumber(seconds)] + '.jpg)',
           'background-repeat': 'no-repeat, no-repeat',
           'background-size': 'cover, cover'
         });
@@ -88,18 +88,20 @@ $(function() {
       }
     });
   } else {
-    $coverImage.attr('src', 'i/bg/' + images[getImageNumber(seconds)]);
+    $coverImage.attr('src', 'i/bg/' + images[getImageNumber(seconds)] + '.jpg');
 
     $cover.imagesLoaded({
       done: function() {
         $('html').css({
-          'background': 'url(i/texture.png), url(i/bg/' + images[getImageNumber(seconds)] + ')',
+          'background': 'url(i/texture.png), url(i/bg/' + images[getImageNumber(seconds)] + '.jpg)',
           'background-repeat': 'no-repeat, no-repeat',
           'background-size': 'cover, cover'
         });
 
         $cover.removeClass('active');
         showLogo();
+
+        $('html').switchBackground();
       }
     });
   }
@@ -204,6 +206,26 @@ $(function() {
     event.preventDefault();
   });
 
+
+  jQuery.fn.switchBackground = function() {
+    var $elem = $(this[0]); // your element
+
+    // use:
+    //$('html').switchBackground();
+
+    var img = $('<img id="bg-switch-element">'); //Equivalent: $(document.createElement('img'))
+    img.attr('src', 'i/bg/' + images[getImageNumber(seconds)] + '.gif');
+
+    img.imagesLoaded({
+      done: function() {
+        $('html').css({
+          'background': 'url(i/texture.png), url(i/bg/' + images[getImageNumber(seconds)] + '.gif)',
+          'background-repeat': 'no-repeat, no-repeat',
+          'background-size': 'cover, cover'
+        });
+      }
+    });
+  };
 
 
   jQuery.fn.showListItems = function() {
