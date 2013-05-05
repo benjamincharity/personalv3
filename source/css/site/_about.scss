@@ -7,7 +7,7 @@
 // @author Benjamin Charity <ben@benjamincharity.com>
 //
 // @doc
-//  __documentation__
+//  Styles for the about page portrait and history.
 // @end
 
 .about {
@@ -124,13 +124,6 @@
   text-align: center;
   width: 100%;
 
-  //&:focus,
-  //&:hover {
-    //ul {
-      //opacity: 1;
-    //}
-  //}
-
   h4 {
     font-family: $helvetica;
     @include rem('font-size',11px);
@@ -152,7 +145,6 @@
   }
 
   li {
-    //float: left;
     font-family: $goudy;
     @include rem('font-size',12px);
     @include rem('letter-spacing',1px);

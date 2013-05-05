@@ -15,6 +15,16 @@ body {
   z-index: 1;
 }
 
+.textured-layer {
+  background: url('/i/texture.png');
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
 .window {
   position: relative;
   height: 100%;
@@ -25,7 +35,7 @@ body {
 }
 
 .cover {
-  background: #fff url('/i/loader.gif') center no-repeat;
+  background: #fff inline-image("loader.gif") center no-repeat;
   display: none;
   height: 100%;
   opacity: 0;
