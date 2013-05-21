@@ -4,12 +4,9 @@ Keep it fresh.
 
 - - -
 
-http://daneden.me/animate/
-nanoscroller
-modernizr
-jquery
-sugar
-raphael icons
-frontage regular
-frontage bold
-http://middlemanapp.com
+- [MiddlemanApp](http://middlemanapp.com)
+- [ZeptoJS](http://zeptojs.com)
+- [Modernizr](http://modernizr.com)
+- [Animate.css](http://daneden.me/animate/)
+- [Raphael Icons](http://raphaeljs.com/icons/)
+- [Frontage (regular/bold)](http://www.myfonts.com/fonts/jurizaech/frontage/)
