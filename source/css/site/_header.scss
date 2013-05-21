@@ -93,15 +93,3 @@
     }
   }
 }
-
-.touch {
-  .main-nav-item {
-    &:focus,
-    &:hover {
-      padding-top: 6px;
-      text-decoration: underline;
-      top: 0;
-    }
-  }
-}
-
