@@ -1,5 +1,3 @@
 //= require modernizr
-//= require jquery
-//= require nanoScroller
-//= require imagesLoaded
+//= require zepto
 //= require scripts

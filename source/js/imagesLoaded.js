@@ -122,4 +122,4 @@ $.fn.imagesLoaded = function( callback ) {
   return deferred ? deferred.promise( $this ) : $this;
 };
 
-})(jQuery);
+})(Zepto);

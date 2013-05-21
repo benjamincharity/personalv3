@@ -4,7 +4,7 @@
   @include customTransition();
 
   // class to push content down UNTIL the nav is interacted with
-  &.primed {
+  &.is-primed {
     padding-top: 140px;
     @include customTransition(all 1000ms);
   }
@@ -71,30 +71,26 @@
     padding: 0;
     opacity: 0;
     width: 32%;
-
-    //&.animated {
-      //opacity: 1;
-    //}
   }
-
 }
+
 .main-nav-item {
   color: $white;
   font-family: $goudy;
   @include rem('font-size',14px);
   font-weight: 100;
-  //opacity: 0;
   padding: 6px;
   position: relative;
   // this needs to be set to allow a transition to top: 10px on hover
   top: 0;
   @include customTransition();
 
-
-  //&:focus,
+  &:focus,
   &:hover {
-    top: 10px;
-    padding-top: 20px;
+    @include breakpoint(tablet) {
+      top: 10px;
+      padding-top: 20px;
+    }
   }
 }
 

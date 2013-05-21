@@ -34,6 +34,10 @@ body {
   z-index: 1;
 }
 
+.content {
+  -webkit-overflow-scrolling: touch;
+}
+
 .cover {
   background: #fff inline-image("loader.gif") center no-repeat;
   display: none;
@@ -44,7 +48,7 @@ body {
   @include customTransition(opacity 400ms);
   width: 100%;
 
-  &.active {
+  &.is-active {
     display: block;
     opacity: 1;
     left: 0;

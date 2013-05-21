@@ -1,395 +1,295 @@
-$(function() {
+var s,
+DollaDollaBillYall = {
 
-  var images = [
-    //'1',
-    '2',
-    //'3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    //'11',
-    '12',
-    '13',
-    '14',
-    //'15',
-    '16',
-    '17',
-    '18',
-    //'19',
-    //'20',
-    '21',
-    //'22',
-    '23',
-    //'24',
-    '25',
-    '26',
-    '27',
-    '28',
-    '29'
-  ];
+  settings : {
+    newDate: new Date(),
+    images: [ '2', '4', '5', '6', '7', '8', '9', '10', '12', '13', '14', '16', '17', '18', '21', '23', '25', '26', '27', '28', '29' ]
+  },
 
-  //var mobileImages = [
-    ////'1',
-    //'2',
-    //'3',
-    //'4',
-    //'5',
-    //'6',
-    ////'7',
-    //'8',
-    //'9',
-    //'10',
-    ////'11',
-    //'12',
-    ////'13',
-    //'14',
-    ////'15',
-    ////'16',
-    //'17',
-    //'18',
-    //'19',
-    ////'20',
-    //'21',
-    ////'22',
-    ////'23',
-    ////'24',
-    ////'25',
-    ////'26',
-    //'27',
-    ////'28',
-    ////'29'
-  //];
+  init: function () {
+    s = this.settings;
 
-        var d = new Date(),
-      seconds = d.getSeconds();
+    this.setBackgroundImage();
 
-   var $cover = $('.cover'),
-  $coverImage = $cover.find('.js-bg');
+    // only load the GIF background image if not on a mobile device
+    if( !$('html').hasClass('touch') ) {
+      this.loadGIFBackground( $('body') );
+    }
+
+    this.navigation();
+  },
 
   //
-  // if it's a touch device, only load the mobile image array with the lighter images
-  if( $('html').hasClass('touch') ) {
-    $coverImage.attr('src', 'i/bg/' + images[getImageNumber(seconds)] + '.jpg');
-
-    $cover.imagesLoaded({
-      done: function() {
-        $('html').css({
-          'background': 'url(i/bg/' + mobileImages[getImageNumber(seconds)] + '.jpg)',
-          'background-repeat': 'no-repeat',
-          'background-size': 'cover'
-        });
-
-        $cover.removeClass('active');
-        showLogo();
-      }
-    });
-  } else {
-    $coverImage.attr('src', 'i/bg/' + images[getImageNumber(seconds)] + '.jpg');
-
-    $cover.imagesLoaded({
-      done: function() {
-        $('html').css({
-          'background': 'url(i/bg/' + images[getImageNumber(seconds)] + '.jpg)',
-          'background-repeat': 'no-repeat',
-          'background-size': 'cover'
-        });
-
-        $cover.removeClass('active');
-        showLogo();
-
-        $('body').switchBackground();
-      }
-    });
-  }
-
-  function getImageNumber(secs) {
-
-    if(secs < images.length) {
-      return secs;
+  //
+  //
+  // used by loadGifBackground()
+  getImageNumber: function (seconds) {
+    if(seconds < s.images.length) {
+      return seconds;
     } else {
-      return getImageNumber(secs - images.length);
+      return this.getImageNumber(seconds - s.images.length);
     }
-
-  }
+  },
 
   //
   //
-  // toggle the main header location change (active state)
-  $('.main-nav').on('click', 'a', function(event) {
-    var $self = $(this),
-      $header = $('.main-header'),
-    $projects = $('.js-projects'),
-       $about = $('.js-about'),
-     $contact = $('.js-contact');
+  //
+  //
+  setBackgroundImage: function () {
+    var seconds = s.newDate.getSeconds();
 
-     var hash = $self.attr('href'),
-    finalHash = hash.substring(1); // remove #
+    // define an element to pass to the background function
+    var $needsBG = $('html');
 
-
-    // if this is the first time...remove the primed class
-    if( $header.hasClass('primed') ) {
-      $header.removeClass('primed');
+    // create a new image
+    var img = new Image();
+    // set the src
+    img.src = 'i/bg/' + s.images[this.getImageNumber(seconds)] + '.jpg';
+    // set the onload function to set the gif as the background of the element
+    img.onload = function() {
+      DollaDollaBillYall.addJPGBackground( $needsBG );
     }
 
+  },
 
-    switch (finalHash) {
-      case "projects":
-        if( $projects.hasClass('active') ) {
-          $projects.hideListItems();
-          $header.addClass('primed');
-        } else if( $about.hasClass('active') | $contact.hasClass('active') ) {
-          $about.hideListItems();
-          $contact.hideListItems();
+  //
+  //
+  //
+  //
+  loadGIFBackground: function( $elem ) {
+    var seconds = s.newDate.getSeconds();
+    var $needsBG = $elem;
 
-          //(function(i) {
-            //$projects.showListItems();
-          //}).delay(300);
-          setTimeout(function() {
-            $projects.showListItems();
-          }, 300);
-        } else {
-          $projects.showListItems();
-        }
-        break;
-      case "about":
-        if( $about.hasClass('active') ) {
-          $about.hideListItems();
-          $header.addClass('primed');
-        } else if( $projects.hasClass('active') | $contact.hasClass('active') ) {
-          $projects.hideListItems();
-          $contact.hideListItems();
+    // usage:
+    //this.switchBackground( $elem );
 
-          //(function(i) {
-            //$('.about__portrait').addClass('animated');
-          //}).delay(100);
-          setTimeout(function() {
-            $('.about__portrait').addClass('animated');
-          }, 100);
-
-          //(function(i) {
-            //$about.showListItems();
-          //}).delay(200);
-          setTimeout(function() {
-            $self.addClass('animated');
-          }, 200);
-
-        } else {
-          $about.showListItems();
-
-          //(function(i) {
-            //$('.about__portrait').addClass('animated');
-
-            //$('.about__history li').each(function(i) {
-              //var $self = $(this);
-
-              ////(function(i) {
-                ////$self.addClass('animated');
-              ////}).delay(i * 50);
-              //setTimeout(function() {
-                //$self.addClass('animated');
-              //}, 50 * (i + 1));
-
-            //});
-          //}).delay(500);
-          setTimeout(function() {
-            $('.about__portrait').addClass('animated');
-
-            $('.about__history li').each(function(i) {
-              var $self = $(this);
-
-              //(function(i) {
-                //$self.addClass('animated');
-              //}).delay(i * 50);
-              setTimeout(function() {
-                $self.addClass('animated');
-              }, 50 * (i + 1));
-
-            });
-          }, 500);
-        }
-        break;
-      case "contact":
-        if( $contact.hasClass('active') ) {
-          $contact.hideListItems();
-          $header.addClass('primed');
-        } else if( $about.hasClass('active') | $projects.hasClass('active') ) {
-          $about.hideListItems();
-          $projects.hideListItems();
-
-          //(function(i) {
-            //$contact.showListItems();
-          //}).delay(300);
-          setTimeout(function() {
-            $contact.showListItems();
-          }, 300);
-        } else {
-          $contact.showListItems();
-        }
-        break;
-      default:
-
+    // create a new image
+    var img = new Image();
+    // set the src
+    img.src = 'i/bg/' + s.images[this.getImageNumber(seconds)] + '.gif';
+    // set the onload function to set the gif as the background of the element
+    img.onload = function( $needsBG ) {
+      DollaDollaBillYall.addGIFBackground( $elem );
     }
 
-    event.preventDefault();
-  });
+  },
 
+  //
+  //
+  //
+  //
+  addJPGBackground: function( $elem ) {
+    var seconds = s.newDate.getSeconds();
+    var $cover = $('.cover');
 
-  jQuery.fn.switchBackground = function() {
-    var $elem = $(this[0]); // your element
-
-    // use:
-    //$('html').switchBackground();
-
-    var img = $('<img id="bg-switch-element">'); //Equivalent: $(document.createElement('img'))
-    img.attr('src', 'i/bg/' + images[getImageNumber(seconds)] + '.gif');
-
-    img.imagesLoaded({
-      done: function() {
-        $elem.css({
-          'background': 'url(i/bg/' + images[getImageNumber(seconds)] + '.gif)',
-          'background-repeat': 'no-repeat',
-          'background-size': 'cover'
-        });
-      }
+    $elem.css({
+      'background': 'url(i/bg/' + s.images[DollaDollaBillYall.getImageNumber(seconds)] + '.jpg)',
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover'
     });
-  };
 
+    $cover.removeClass('is-active');
+    this.showLogo();
+  },
 
-  jQuery.fn.showListItems = function() {
-      var $elem = $(this[0]), // It's your element
-          items = $elem.find('.future');
+  //
+  //
+  //
+  // used by loadGIFBackground()
+  addGIFBackground: function( $elem ) {
+    var seconds = s.newDate.getSeconds();
 
-    $elem.addClass('active');
+    $elem.css({
+      'background': 'url(i/bg/' + s.images[DollaDollaBillYall.getImageNumber(seconds)] + '.gif)',
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover'
+    });
+  },
+
+  //
+  //
+  //
+  //
+  navigation: function (seconds) {
+    $('.main-nav').on('click', 'a', function(event) {
+      var $self = $(this);
+      var $header = $('.main-header');
+      var $projects = $('.js-projects');
+      var $about = $('.js-about');
+      var $contact = $('.js-contact');
+
+      var hash = $self.attr('href');
+      var finalHash = hash.substring(1); // remove #
+
+      // if this is the first time...remove the is-primed class
+      if( $header.hasClass('is-primed') ) {
+        $header.removeClass('is-primed');
+      }
+
+      switch (finalHash) {
+        case "projects":
+          if( $projects.hasClass('is-active') ) {
+            DollaDollaBillYall.hideListItems( $projects );
+            $header.addClass('is-primed');
+          } else if( $about.hasClass('is-active') | $contact.hasClass('is-active') ) {
+            DollaDollaBillYall.hideListItems( $about );
+            DollaDollaBillYall.hideListItems( $contact );
+
+            setTimeout(function() {
+              DollaDollaBillYall.showListItems( $projects );
+            }, 300);
+          } else {
+            DollaDollaBillYall.showListItems( $projects );
+          }
+          break;
+
+        case "about":
+          if( $about.hasClass('is-active') ) {
+            DollaDollaBillYall.hideListItems( $about );
+            $header.addClass('is-primed');
+          } else if( $projects.hasClass('is-active') | $contact.hasClass('is-active') ) {
+            DollaDollaBillYall.hideListItems( $projects );
+            DollaDollaBillYall.hideListItems( $contact );
+
+            DollaDollaBillYall.showListItems( $about );
+
+            setTimeout(function() {
+              $('.about__portrait').addClass('animated');
+
+              $('.about__history li').each(function(i) {
+                var $self = $(this);
+
+                setTimeout(function() {
+                  $self.addClass('animated');
+                }, 50 * (i + 1));
+
+              });
+            }, 100);
+
+            setTimeout(function() {
+              $self.addClass('animated');
+            }, 200);
+
+          } else {
+            DollaDollaBillYall.showListItems( $about );
+
+            setTimeout(function() {
+              $('.about__portrait').addClass('animated');
+
+              $('.about__history li').each(function(i) {
+                var $self = $(this);
+
+                setTimeout(function() {
+                  $self.addClass('animated');
+                }, 50 * (i + 1));
+
+              });
+            }, 500);
+          }
+          break;
+
+        case "contact":
+          if( $contact.hasClass('is-active') ) {
+            DollaDollaBillYall.hideListItems( $contact );
+            $header.addClass('is-primed');
+          } else if( $about.hasClass('is-active') | $projects.hasClass('is-active') ) {
+            DollaDollaBillYall.hideListItems( $about );
+            DollaDollaBillYall.hideListItems( $projects );
+
+            setTimeout(function() {
+              DollaDollaBillYall.showListItems( $contact );
+            }, 300);
+          } else {
+            DollaDollaBillYall.showListItems( $contact );
+          }
+          break;
+        default:
+      }
+
+      event.preventDefault();
+    });
+  },
+
+  //
+  //
+  //
+  // used by showLogo()
+  showNavigation: function() {
+    $('.main-nav li').each(function(i) {
+      var $self = $(this);
+
+      setTimeout(function(i) {
+        $self.addClass('animated  flipInX');
+      }, i * 120);
+    });
+  },
+
+  //
+  //
+  //
+  // used by setBackgroundImage()
+  showLogo: function() {
+    var $logo = $('.js-logo');
+
+    setTimeout(function(i) {
+      $logo.addClass('animated  flipInX');
+    }, 400);
+
+    setTimeout(function(i) {
+      $logo.removeClass('initial');
+      DollaDollaBillYall.showNavigation();
+    }, 600);
+  },
+
+  //
+  //
+  //
+  // used by navigation()
+  showListItems: function($elem) {
+    var items = $elem.find('.future');
+
+    $elem.addClass('is-active');
 
     $(items).each(function(i) {
       var $self = $(this);
 
-      //(function(i) {
-        //$self.removeClass('future').addClass('animated');
-      //}).delay(i * 26);
       setTimeout(function(i) {
         $self.removeClass('future').addClass('animated');
       }, i * 26);
     });
-  };
+  },
 
-  jQuery.fn.hideListItems = function() {
-      var $elem = $(this[0]), // It's your element
-          items = $elem.find('.animated');
+  //
+  //
+  //
+  // used by navigation()
+  hideListItems: function($elem) {
+    var items = $elem.find('.animated');
 
     $(items).each(function(i) {
       var $self = $(this);
 
-      //(function(i) {
-        //$self.addClass('fadeOutUp');
-      //}).delay(i * 40);
       setTimeout(function(i) {
         $self.addClass('fadeOutUp');
       }, i * 40);
     });
 
-    //(function() {
-      //$elem.removeClass('active');
-
-      //$(items).each(function(i) {
-        //var $self = $(this);
-
-        ////(function(i) {
-          ////$self.removeClass('fadeOutUp  animated').addClass('future');
-        ////}).delay(i * 50);
-        //setTimeout(function(i) {
-          //$self.removeClass('fadeOutUp  animated').addClass('future');
-        //}, i * 50);
-      //});
-    //}).delay(300);
     setTimeout(function(i) {
-      $elem.removeClass('active');
+      $elem.removeClass('is-active');
 
       $(items).each(function(i) {
         var $self = $(this);
 
-        //(function(i) {
-          //$self.removeClass('fadeOutUp  animated').addClass('future');
-        //}).delay(i * 50);
         setTimeout(function(i) {
           $self.removeClass('fadeOutUp  animated').addClass('future');
         }, i * 50);
       });
     }, 300);
-
-  };
-
-
-  //
-  //
-  // animate the nav items in
-  function showNav() {
-    $('.main-nav li').each(function(i) {
-      var $self = $(this);
-
-      //(function(i) {
-        //$self.addClass('animated  flipInX');
-      //}).delay(i * 120);
-      setTimeout(function(i) {
-        $self.addClass('animated  flipInX');
-      }, i * 120);
-    });
   }
 
-  //
-  //
-  // animate the logo in
-  function showLogo() {
-    var $logo = $('.js-logo');
-
-    //(function() {
-      //$logo.addClass('animated  flipInX');
-    //}).delay(400);
-    setTimeout(function(i) {
-      $logo.addClass('animated  flipInX');
-    }, 400);
-    //(function() {
-      //$logo.removeClass('initial');
-      //showNav();
-    //}).delay(600);
-    setTimeout(function(i) {
-      $logo.removeClass('initial');
-      showNav();
-    }, 600);
-  }
+};
 
 
-
-
-  //
-  //
-  // initialize the scrollbars
-  $('.nano').nanoScroller({
-    iOSNativeScrolling: true
-  });
-
-
-  //
-  //
-  // Read a page's GET URL variables and return them as an associative array.
-  $.extend({
-    getUrlVars: function(){
-      var vars = [], hash;
-      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-      for(var i = 0; i < hashes.length; i++)
-  {
-    hash = hashes[i].split('=');
-    vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
-  }
-  return vars;
-    },
-    getUrlVar: function(name){
-      return $.getUrlVars()[name];
-    }
-  });
-});
+(function ($) {
+  DollaDollaBillYall.init();
+})(window.jQuery || window.Zepto);
