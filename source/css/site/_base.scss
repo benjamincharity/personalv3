@@ -11,7 +11,8 @@ html {
 }
 
 body {
-  position: relative;
+  overflow-y: scroll;
+  position: static;
   z-index: 1;
 }
 

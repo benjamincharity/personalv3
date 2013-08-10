@@ -40,6 +40,7 @@
   border: 1px solid rgba(#000, 0.2);
   @include clear();
   height: 180px;
+  overflow: hidden;
   padding: 12px;
   position: relative;
 
@@ -80,6 +81,22 @@
     &:hover {
       background-color: rgba($black, 0.6);
     }
+  }
+
+  &.personal {
+    border: 1px solid rgba(200,200,200, 0.4);
+  }
+
+  .banner {
+    background-color: rgba(white, 0.3);
+    color: #000;
+    display: inline-block;
+    @include rem('font-size',9px);
+    padding: .1em 2em;
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    @include rotate(45deg);
   }
 }
 
