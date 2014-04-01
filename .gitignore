@@ -21,3 +21,6 @@
 
 # Design files
 /designs/*
+
+# Ignore our config file as it contains S3 credentials
+/config.rb
